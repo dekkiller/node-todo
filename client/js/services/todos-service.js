@@ -9,6 +9,12 @@ angular.module('todoService', [])
 			},
 			create : function(todoData) {
 				return $http.post('/api/todos', todoData);
+			},
+			complete : function(todoData, upd) {
+				return $http.put('/api/todos/c' + todoData._id, upd);
+			},
+			snooze : function(todoData, upd) {
+				return $http.put('/api/todos/s' + todoData._id, upd);
 			}
 
 		}
