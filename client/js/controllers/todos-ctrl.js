@@ -39,6 +39,19 @@ angular.module('todoController', [])
 		};
 
 
+
+		$scope.snoozed = function(todo) {
+			$scope.loading = true;
+			NS = {body: !todo.snoozed};
+			console.log("Checked" + NS);
+			Todos.snooze(todo, NS)
+				.success(function(data) {
+					$scope.loading = false;
+					$scope.todos = data; // assign our new list of todos
+				});
+		};
+
+
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createTodo = function() {
