@@ -14,6 +14,31 @@ angular.module('todoController', [])
 				$scope.loading = false;
 			});
 
+
+		
+
+
+		$scope.checked = function(todo) {
+			
+			$scope.loading = true;
+			NS = !todo.completed;
+			console.log("Checked" + NS);
+			Todos.complete(todo, NS)
+				.success(function(data) {
+					$scope.loading = false;
+					$scope.todos = data; // assign our new list of todos
+				});
+
+
+			if(todo.completed) {
+				$scope.done++;
+			}
+			else {
+				$scope.done--;
+			}
+		};
+
+
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createTodo = function() {
