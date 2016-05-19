@@ -36,10 +36,6 @@ module.exports = function(app) {
 			getTodos(res);
 		});
 
-	});
-	app.delete('/api/todos/d*', function(req, res) {
-		Todo.findById(req.originalUrl.substring(12)).remove().exec();
-		getTodos(res);
 	});	
 	
 	app.put('/api/todos/p*', function(req, res) {
@@ -51,6 +47,8 @@ module.exports = function(app) {
 		});
 		getTodos(res);
 	});
+
+	
 
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {
